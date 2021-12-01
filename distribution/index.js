@@ -114,7 +114,8 @@ async function init() {
 	}
 
 	// A new tag must be created
-	const version = dayjs().tz('Asia/Taipei').format('YYYY.MM.DD.HHmm');
+	const tsVersion = dayjs().tz('Asia/Taipei').format('YYYY.MM.DD.HHmm');
+	const version = `${core.getInput('prefix') || ''}${tsVersion};`;
 	core.info(
 		'HEAD isn’t tagged. `daily-version-action` will create `' + version + '`'
 	);
