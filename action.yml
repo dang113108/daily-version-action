@@ -1,5 +1,5 @@
-name: 'Daily Version'
-description: 'Creates a new tag using the format Y.M.D, but only if HEAD isn’t already tagged'
+name: 'Daily Version (with TimeZone)'
+description: 'Creates a new tag using the format YYYY.MM.DD.HHmm, but only if HEAD isn’t already tagged'
 icon: calendar
 branding:
   icon: 'calendar'
