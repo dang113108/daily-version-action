@@ -20,34 +20,6 @@ async function init() {
 		);
 		return;
 	}
-	const force_create = core.getInput('force_create');
-	core.info('The option `force_create` is ' + force_create);
-
-	if (force_create != "true") {
-		// Look for tags on the current commit
-		await execFile('git', [
-			'fetch',
-			'--depth=1',
-			'origin',
-			'refs/tags/*:refs/tags/*'
-		]);
-		const { stdout: tagsOnHead } = await execFile('git', [
-			'tag',
-			'-l',
-			'--points-at',
-			'HEAD'
-		]);
-		if (tagsOnHead) {
-			const [mostRecentTag] = tagsOnHead.split('\n'); // `stdout` may contain multiple tags
-			core.setOutput('version', mostRecentTag);
-			core.info(
-				'No new commits since the last tag (' +
-				mostRecentTag +
-				'). No new tags will be created by `daily-version-action`.'
-			);
-			return;
-		}
-	}
 
 	// A new tag must be created
 	const tsVersion = dayjs().tz('Asia/Taipei').format('YYYY.MM.DD.HHmm');

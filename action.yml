@@ -7,8 +7,6 @@ branding:
 inputs:
   prefix:
     description: "String to prepend to the tag name"
-  force_create:
-    description: "Provide `true` and the tag will created no matter the commit had no changed"
 outputs:
   created:
     description: "If it exists, a new tag has been created"
